@@ -87,6 +87,13 @@ resource "argocd_application" "operator-crds" {
         }
         limit = "0"
       }
+
+      # CRDs do KubeRay são muito grandes (>256KB). Client-side apply
+      # grava o manifesto no annotation last-applied-configuration, que
+      # estoura o limite de 262144 bytes. Server-side apply evita isso.
+      sync_options = [
+        "ServerSideApply=true"
+      ]
     }
   }
 
