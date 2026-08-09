@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/gersonrs/modern-gitops-stack-module-ray/compare/v1.1.0...v1.2.0) (2026-08-09)
+
+
+### 🚀 New Features
+
+* update repo ([a35fb75](https://github.com/gersonrs/modern-gitops-stack-module-ray/commit/a35fb75cd5017a4bd3a991240079d22259c20656))
+
 ## [1.1.0](https://github.com/GersonRS/modern-gitops-stack-module-ray/compare/v1.0.0...v1.1.0) (2025-05-27)
 
 
