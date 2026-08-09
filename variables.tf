@@ -99,52 +99,6 @@ variable "dependency_ids" {
   default     = {}
 }
 
-variable "replicas" {
-  description = "Number of replicas for module"
-  type        = number
-  default     = 3
-}
-
-variable "resources" {
-  description = <<-EOT
-    Resource limits and requests for module components. Follow the style on https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/[official documentation] to understand the format of the values.
-
-    IMPORTANT: These are not production values. You should always adjust them to your needs.
-  EOT
-  type = object({
-    requests = optional(object({
-      cpu    = optional(string, "100m")
-      memory = optional(string, "256Mi")
-    }), {})
-    limits = optional(object({
-      cpu    = optional(string, "1000m")
-      memory = optional(string, "512Mi")
-    }), {})
-  })
-  default = {}
-}
-
-
 #######################
 ## Module variables
 #######################
-
-variable "storage" {
-  description = "MinIO S3 bucket configuration values for the bucket where the archived metrics will be stored."
-  type = object({
-    bucket_name       = string
-    endpoint          = string
-    access_key        = string
-    secret_access_key = string
-  })
-}
-
-variable "database" {
-  description = "database configuration"
-  type = object({
-    user     = string
-    password = string
-    database = string
-    service  = string
-  })
-}
