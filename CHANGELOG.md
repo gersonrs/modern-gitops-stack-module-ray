@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/gersonrs/modern-gitops-stack-module-ray/compare/v1.4.0...v1.4.1) (2026-08-09)
+
+
+### 🔥 Bug Fixes
+
+* enable server-side apply for kuberay CRDs to avoid annotation size limit ([7d3edd0](https://github.com/gersonrs/modern-gitops-stack-module-ray/commit/7d3edd032b0c43608b24824a7fc9d32deb94bcf9))
+
 ## [1.4.0](https://github.com/gersonrs/modern-gitops-stack-module-ray/compare/v1.3.0...v1.4.0) (2026-08-09)
 
 
