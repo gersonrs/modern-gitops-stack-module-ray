@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/gersonrs/modern-gitops-stack-module-ray/compare/v1.2.0...v1.3.0) (2026-08-09)
+
+
+### 🚀 New Features
+
+* remove outputs ([90007e2](https://github.com/gersonrs/modern-gitops-stack-module-ray/commit/90007e2c19f376c22639614c84fa280a5284ff96))
+
 ## [1.2.0](https://github.com/gersonrs/modern-gitops-stack-module-ray/compare/v1.1.0...v1.2.0) (2026-08-09)
 
 
