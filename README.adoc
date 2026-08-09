@@ -5,7 +5,7 @@
 
 The following requirements are needed by this module:
 
-- [[requirement_argocd]] <<requirement_argocd,argocd>> (>= 6)
+- [[requirement_argocd]] <<requirement_argocd,argocd>> (>= 7)
 
 - [[requirement_null]] <<requirement_null,null>> (>= 3)
 
@@ -17,23 +17,18 @@ The following providers are used by this module:
 
 - [[provider_null]] <<provider_null,null>> (>= 3)
 
-- [[provider_argocd]] <<provider_argocd,argocd>> (>= 6)
+- [[provider_argocd]] <<provider_argocd,argocd>> (>= 7)
 
 - [[provider_utils]] <<provider_utils,utils>> (>= 1)
-
-- [[provider_kubernetes]] <<provider_kubernetes,kubernetes>>
 
 === Resources
 
 The following resources are used by this module:
 
 - https://registry.terraform.io/providers/argoproj-labs/argocd/latest/docs/resources/application[argocd_application.operator] (resource)
-- https://registry.terraform.io/providers/argoproj-labs/argocd/latest/docs/resources/application[argocd_application.operator-crds] (resource)
-- https://registry.terraform.io/providers/argoproj-labs/argocd/latest/docs/resources/application[argocd_application.this] (resource)
 - https://registry.terraform.io/providers/argoproj-labs/argocd/latest/docs/resources/project[argocd_project.this] (resource)
 - https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource[null_resource.dependencies] (resource)
 - https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource[null_resource.this] (resource)
-- https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/data-sources/service[kubernetes_service.ray] (data source)
 - https://registry.terraform.io/providers/cloudposse/utils/latest/docs/data-sources/deep_merge_yaml[utils_deep_merge_yaml.values] (data source)
 
 === Required Inputs
@@ -51,36 +46,6 @@ Type: `string`
 Description: Base domain of the cluster. Value used for the ingress' URL of the application.
 
 Type: `string`
-
-==== [[input_storage]] <<input_storage,storage>>
-
-Description: MinIO S3 bucket configuration values for the bucket where the archived metrics will be stored.
-
-Type:
-[source,hcl]
-----
-object({
-    bucket_name       = string
-    endpoint          = string
-    access_key        = string
-    secret_access_key = string
-  })
-----
-
-==== [[input_database]] <<input_database,database>>
-
-Description: database configuration
-
-Type:
-[source,hcl]
-----
-object({
-    user     = string
-    password = string
-    database = string
-    service  = string
-  })
-----
 
 === Optional Inputs
 
@@ -148,7 +113,7 @@ Description: Override of target revision of the application chart.
 
 Type: `string`
 
-Default: `"v1.1.0"`
+Default: `"v1.2.0"`
 
 ==== [[input_cluster_issuer]] <<input_cluster_issuer,cluster_issuer>>
 
@@ -206,37 +171,6 @@ Type: `map(string)`
 
 Default: `{}`
 
-==== [[input_replicas]] <<input_replicas,replicas>>
-
-Description: Number of replicas for module
-
-Type: `number`
-
-Default: `3`
-
-==== [[input_resources]] <<input_resources,resources>>
-
-Description: Resource limits and requests for module components. Follow the style on https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/[official documentation] to understand the format of the values.
-
-IMPORTANT: These are not production values. You should always adjust them to your needs.
-
-Type:
-[source,hcl]
-----
-object({
-    requests = optional(object({
-      cpu    = optional(string, "100m")
-      memory = optional(string, "256Mi")
-    }), {})
-    limits = optional(object({
-      cpu    = optional(string, "1000m")
-      memory = optional(string, "512Mi")
-    }), {})
-  })
-----
-
-Default: `{}`
-
 === Outputs
 
 The following outputs are exported:
@@ -269,7 +203,7 @@ Description: Ray endpoint external
 [cols="a,a",options="header,autowidth"]
 |===
 |Name |Version
-|[[requirement_argocd]] <<requirement_argocd,argocd>> |>= 6
+|[[requirement_argocd]] <<requirement_argocd,argocd>> |>= 7
 |[[requirement_null]] <<requirement_null,null>> |>= 3
 |[[requirement_utils]] <<requirement_utils,utils>> |>= 1
 |===
@@ -279,10 +213,9 @@ Description: Ray endpoint external
 [cols="a,a",options="header,autowidth"]
 |===
 |Name |Version
-|[[provider_utils]] <<provider_utils,utils>> |>= 1
-|[[provider_argocd]] <<provider_argocd,argocd>> |>= 6
 |[[provider_null]] <<provider_null,null>> |>= 3
-|[[provider_kubernetes]] <<provider_kubernetes,kubernetes>> |n/a
+|[[provider_argocd]] <<provider_argocd,argocd>> |>= 7
+|[[provider_utils]] <<provider_utils,utils>> |>= 1
 |===
 
 = Resources
@@ -291,12 +224,9 @@ Description: Ray endpoint external
 |===
 |Name |Type
 |https://registry.terraform.io/providers/argoproj-labs/argocd/latest/docs/resources/application[argocd_application.operator] |resource
-|https://registry.terraform.io/providers/argoproj-labs/argocd/latest/docs/resources/application[argocd_application.operator-crds] |resource
-|https://registry.terraform.io/providers/argoproj-labs/argocd/latest/docs/resources/application[argocd_application.this] |resource
 |https://registry.terraform.io/providers/argoproj-labs/argocd/latest/docs/resources/project[argocd_project.this] |resource
 |https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource[null_resource.dependencies] |resource
 |https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource[null_resource.this] |resource
-|https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/data-sources/service[kubernetes_service.ray] |data source
 |https://registry.terraform.io/providers/cloudposse/utils/latest/docs/data-sources/deep_merge_yaml[utils_deep_merge_yaml.values] |data source
 |===
 
@@ -362,7 +292,7 @@ Description: Ray endpoint external
 |[[input_target_revision]] <<input_target_revision,target_revision>>
 |Override of target revision of the application chart.
 |`string`
-|`"v1.1.0"`
+|`"v1.2.0"`
 |no
 
 |[[input_cluster_issuer]] <<input_cluster_issuer,cluster_issuer>>
@@ -414,70 +344,6 @@ object({
 |`map(string)`
 |`{}`
 |no
-
-|[[input_replicas]] <<input_replicas,replicas>>
-|Number of replicas for module
-|`number`
-|`3`
-|no
-
-|[[input_resources]] <<input_resources,resources>>
-|Resource limits and requests for module components. Follow the style on https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/[official documentation] to understand the format of the values.
-
-IMPORTANT: These are not production values. You should always adjust them to your needs.
-
-|
-
-[source]
-----
-object({
-    requests = optional(object({
-      cpu    = optional(string, "100m")
-      memory = optional(string, "256Mi")
-    }), {})
-    limits = optional(object({
-      cpu    = optional(string, "1000m")
-      memory = optional(string, "512Mi")
-    }), {})
-  })
-----
-
-|`{}`
-|no
-
-|[[input_storage]] <<input_storage,storage>>
-|MinIO S3 bucket configuration values for the bucket where the archived metrics will be stored.
-|
-
-[source]
-----
-object({
-    bucket_name       = string
-    endpoint          = string
-    access_key        = string
-    secret_access_key = string
-  })
-----
-
-|n/a
-|yes
-
-|[[input_database]] <<input_database,database>>
-|database configuration
-|
-
-[source]
-----
-object({
-    user     = string
-    password = string
-    database = string
-    service  = string
-  })
-----
-
-|n/a
-|yes
 
 |===
 
