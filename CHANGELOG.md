@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/gersonrs/modern-gitops-stack-module-ray/compare/v1.4.1...v1.5.0) (2026-08-10)
+
+
+### 🚀 New Features
+
+* change namespace ([bc748df](https://github.com/gersonrs/modern-gitops-stack-module-ray/commit/bc748dfb72bc6ef3d30f550a41ff24d8f49342cd))
+
 ## [1.4.1](https://github.com/gersonrs/modern-gitops-stack-module-ray/compare/v1.4.0...v1.4.1) (2026-08-09)
 
 
