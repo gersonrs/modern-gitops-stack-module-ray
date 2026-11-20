@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/gersonrs/modern-gitops-stack-module-ray/compare/v1.5.0...v2.0.0) (2026-11-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* provider major bumps and a stricter Terraform baseline; consumers must run `terraform init -upgrade`.
+
+### 🚀 New Features
+
+* upgrade charts, providers and Terraform baseline ([#7](https://github.com/gersonrs/modern-gitops-stack-module-ray/issues/7)) ([55d9604](https://github.com/gersonrs/modern-gitops-stack-module-ray/commit/55d9604cd70e884ba9052c8d37d0d843605c81b8))
+
 ## [1.5.0](https://github.com/gersonrs/modern-gitops-stack-module-ray/compare/v1.4.1...v1.5.0) (2026-08-10)
 
 
