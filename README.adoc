@@ -1,4 +1,48 @@
 = modern-gitops-stack-module-ray
+// Document attributes to replace along the document
+:kuberay-operator-chart-version: 1.7.2
+:original-repo-url: https://github.com/ray-project/kuberay
+
+A https://modern-gitops-stack.io[Modern GitOps Stack] module to deploy KubeRay, the operator that runs Ray clusters and RayJobs on Kubernetes.
+
+The kuberay-operator chart used by this module is shipped in this repository as well, in order to avoid any unwanted behaviors caused by unsupported versions.
+
+[cols="1,1,1",options="autowidth,header"]
+|===
+|Current Chart Version |Original Repository |Default Values
+|*1.7.2* |https://github.com/ray-project/kuberay/tree/main/helm-chart/kuberay-operator[kuberay-operator] |https://artifacthub.io/packages/helm/kuberay-operator/kuberay-operator/1.7.2?modal=values[`values.yaml`]
+|===
+
+== Usage
+
+This module can be declared by adding the following block to your Terraform configuration:
+
+[source,terraform]
+----
+module "ray" {
+  source = "git::https://github.com/GersonRS/modern-gitops-stack-module-ray.git?ref=<RELEASE>"
+
+  cluster_name   = local.cluster_name
+  base_domain    = local.base_domain
+  subdomain      = local.subdomain
+  cluster_issuer = local.cluster_issuer
+  app_autosync   = local.app_autosync
+
+  dependency_ids = {
+    istio = module.istio.id
+  }
+}
+----
+
+The application is deployed to the `mlops` namespace.
+
+== Technical Reference
+
+=== Dependencies
+
+==== `module.istio.id`
+
+The Ray dashboard is exposed through the Istio gateway.
 
 // BEGIN_TF_DOCS
 === Requirements
