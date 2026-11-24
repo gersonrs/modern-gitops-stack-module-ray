@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/gersonrs/modern-gitops-stack-module-ray/compare/v2.0.0...v2.0.1) (2026-11-24)
+
+
+### 📚 Documentation
+
+* add usage and dependencies to the module documentation ([#9](https://github.com/gersonrs/modern-gitops-stack-module-ray/issues/9)) ([8d8bb1f](https://github.com/gersonrs/modern-gitops-stack-module-ray/commit/8d8bb1f02c915f50c53a8c87f54faacc839dd393))
+
 ## [2.0.0](https://github.com/gersonrs/modern-gitops-stack-module-ray/compare/v1.5.0...v2.0.0) (2026-11-20)
 
 
